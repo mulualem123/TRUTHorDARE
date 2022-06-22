@@ -7,6 +7,8 @@
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,13 +18,19 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
 public class FXGui extends Application {
-	private static ArrayList<String> players = new ArrayList<String>();
+	protected static ArrayList<String> players = new ArrayList<String>();
 	private static String listOfPlayers = "";
-	private static int track = 0;
-	private static TruthDareMethods truthDareMethods = new TruthDareMethods();
+	protected static int track = 0;
+	protected static TruthDareMethods truthDareMethods = new TruthDareMethods();
+
+	protected Scene insertPlayers;
+	protected Scene giveChoices;
+	protected Scene displayQuestions;
+	protected Scene outOfQuestions;
+	protected Scene playerList;
+
+	protected static Stage stage ;
 
 	public static void main(String args[]) {
 		System.out.println("Call lounch methode");
@@ -30,17 +38,34 @@ public class FXGui extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage primaryStage) throws Exception {
+		stage = primaryStage ;
+		//new
+		Parent playerListFxml= FXMLLoader.load(getClass().getResource("/playerList.fxml"));
+		//Parent optionsFxml = FXMLLoader.load(getClass().getResource("/options.fxml"));
+		Parent displayFxml = FXMLLoader.load(getClass().getResource("/displayStatement.fxml"));
+		//Parent outOfQuestionFxml = FXMLLoader.load(getClass().getResource("/outOfQuestions.fxml"));
+		String css = this.getClass().getResource("style.css").toExternalForm();
+
+		//classic 
 		StackPane inserPlayerLayout = new StackPane(); 
 		StackPane giveOptionLayout = new StackPane(); 
 		StackPane displayQuestionsLayout = new StackPane(); 
 		StackPane outOfQuestionLayout = new StackPane(); 
 
-		Scene insertPlayers = new Scene(inserPlayerLayout, 500, 500);
-		Scene giveChoices = new Scene(giveOptionLayout, 500, 500);
-		Scene displayQuestions = new Scene(displayQuestionsLayout, 500, 500);
-		Scene outOfQuestions = new Scene(outOfQuestionLayout, 500, 500);
-		//scene.getStylesheets().add(directory);
+		//flexable between new and classic
+		//Scene insertPlayers = new Scene(inserFxml);
+		//insertPlayers.getStylesheets().add(css);
+		//Scene giveChoices = new Scene(optionFxml);
+		//Scene displayQuestions = new Scene(displayFxml);
+		//Scene outOfQuestions = new Scene(outOfQuestionFxml);
+
+		playerList = new Scene(playerListFxml);
+		//giveChoices = new Scene(optionsFxml);
+		displayQuestions = new Scene(displayFxml);
+		//outOfQuestions = new Scene(outOfQuestionFxml);
+
+		////scene.getStylesheets().add(directory);
 
 		//inserPlayerNames
 		Label welcomeLabel = new Label("Welcome to Truth or Dare");
@@ -146,7 +171,7 @@ public class FXGui extends Application {
 
 		//give option
 		stage.setTitle("Truth or Dare");
-		stage.setScene(insertPlayers);
+		stage.setScene(playerList);
 		stage.show();
 	}
 
