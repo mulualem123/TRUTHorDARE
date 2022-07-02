@@ -1,3 +1,4 @@
+package application;
 
 /**
  * Mulualem Hailom
@@ -55,6 +56,6 @@ public class TruthDareMethods {
 		truth = new Statement().getTruth();
 
 	}
-
+	
 
 }
