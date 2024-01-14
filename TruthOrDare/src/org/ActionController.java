@@ -1,9 +1,7 @@
-import java.awt.Label;
+package org;
 import java.awt.TextField;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import com.sun.jdi.event.EventQueue;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,15 +10,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ListView.EditEvent;
 import javafx.stage.Stage;
 
-public class Controller extends FXGui{
-	//private static ArrayList<String> players = new ArrayList<String>();
+public class ActionController{
+	private static ArrayList<String> players = new ArrayList<String>();
 	//private static String listOfPlayers = "";
-	//private static int track = 0;
-	//private static TruthDareMethods truthDareMethods = new TruthDareMethods();
+	private static int track = 0;
+	private static TruthDareMethods truthDareMethods = new TruthDareMethods();
 
 	private  Stage stage;
 	private  Scene scene;
@@ -28,25 +26,24 @@ public class Controller extends FXGui{
 
 	//inserFxml
 	@FXML
-	private TextField playerName;
+	public TextField textField;
 	@FXML
-	private Button startGame;
+	public Button startGame;
 	@FXML 
-	private Label announcePlayers, askTDLabel, displayTDLabel;
+	public Labeled announcePlayers, askTDLabel, displayTDLabel;
 	@FXML
-	private ListView listView;
+	protected ListView listView;
 
 	//Button Actions
 	public void add(ActionEvent e) {
-
 		try {
-			if(playerName.getText()!=null) {
-				String str = playerName.getText();
+			if(textField.getText()!=null) {
+				String str = textField.getText();
 				System.out.println(str);
-				playerName.setText("");
+				textField.setText("");
 				//listOfPlayers = listOfPlayers + " " + str;
 				listView.getItems().add(str);
-				announcePlayers.setText("Insert next player name.");
+				//announcePlayers.setText("Insert next player name.");
 				//welcomeLabel.setText("The palyers are " + listOfPlayers );
 				players.add(str);
 			}
@@ -63,11 +60,11 @@ public class Controller extends FXGui{
 	}
 	public void dare(ActionEvent e) throws IOException {
 
-		displayTDLabel.setText(TruthDareMethods.getDare());
+		//displayTDLabel.setText(TruthDareMethods.getDare());
 		displayStatement(e);
 	}
 	public void truth(ActionEvent e) throws IOException {
-		displayTDLabel.setText(TruthDareMethods.getTruth());
+		//displayTDLabel.setText(TruthDareMethods.getTruth());
 		displayStatement(e);	
 	}
 	public void next(ActionEvent e) throws IOException {
@@ -90,12 +87,12 @@ public class Controller extends FXGui{
 		}
 
 	}
-	public void quit(ActionEvent e) {
+	public void quit(ActionEvent e) throws IOException {
 
-		playerName.setText("");;
+		//textField.setText("");;
 		players.clear();
 		truthDareMethods.reset();
-		stage.setScene(insertPlayers);
+		playerList(e);
 
 	}
 	public void restart(ActionEvent e) throws IOException {

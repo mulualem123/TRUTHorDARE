@@ -1,3 +1,5 @@
+package org;
+
 /**
  * Mulualem Hailom
  * 6-10-2022
@@ -7,6 +9,7 @@
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,7 +32,7 @@ public class FXGui extends Application {
 	protected Scene displayQuestions;
 	protected Scene outOfQuestions;
 	protected Scene playerList;
-
+	
 	protected static Stage stage ;
 
 	public static void main(String args[]) {
@@ -41,10 +44,10 @@ public class FXGui extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		stage = primaryStage ;
 		//new
-		Parent playerListFxml= FXMLLoader.load(getClass().getResource("/playerList.fxml"));
+		//Parent playerListFxml= FXMLLoader.load(getClass().getResource("/playerList.fxml"));
 		//Parent optionsFxml = FXMLLoader.load(getClass().getResource("/options.fxml"));
-		Parent displayFxml = FXMLLoader.load(getClass().getResource("/displayStatement.fxml"));
-		//Parent outOfQuestionFxml = FXMLLoader.load(getClass().getResource("/outOfQuestions.fxml"));
+		//Parent displayFxml = FXMLLoader.load(getClass().getResource("/displayStatement.fxml"));
+		Parent outOfQuestionFxml = FXMLLoader.load(getClass().getResource("/outOfQuestions.fxml"));
 		String css = this.getClass().getResource("style.css").toExternalForm();
 
 		//classic 
@@ -60,10 +63,10 @@ public class FXGui extends Application {
 		//Scene displayQuestions = new Scene(displayFxml);
 		//Scene outOfQuestions = new Scene(outOfQuestionFxml);
 
-		playerList = new Scene(playerListFxml);
+		//playerList = new Scene(playerListFxml);
 		//giveChoices = new Scene(optionsFxml);
-		displayQuestions = new Scene(displayFxml);
-		//outOfQuestions = new Scene(outOfQuestionFxml);
+		//displayQuestions = new Scene(displayFxml);
+		outOfQuestions = new Scene(outOfQuestionFxml);
 
 		////scene.getStylesheets().add(directory);
 
@@ -171,7 +174,7 @@ public class FXGui extends Application {
 
 		//give option
 		stage.setTitle("Truth or Dare");
-		stage.setScene(playerList);
+		stage.setScene(outOfQuestions);
 		stage.show();
 	}
 

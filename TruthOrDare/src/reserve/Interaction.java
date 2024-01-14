@@ -1,3 +1,4 @@
+package reserve;
 
 /**
  * Mulualem Hailom
@@ -10,6 +11,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import com.sun.source.tree.WhileLoopTree;
+
+import application.Statement;
 
 public class Interaction {
 

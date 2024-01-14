@@ -1,3 +1,4 @@
+package org;
 import java.awt.Label;
 import java.awt.TextField;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import reserve.StageLoader;
 
 public class Controller2 extends StageLoader{
 	
