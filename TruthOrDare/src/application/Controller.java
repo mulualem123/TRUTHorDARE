@@ -15,7 +15,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 public class Controller {
 	private static ArrayList<String> players = new ArrayList<String>();
 	private static TruthDareMethods truthDareMethods;
